@@ -1,0 +1,37 @@
+.park-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.park-card ul {
+    padding-left: 1.2rem;
+    margin: 1rem;
+}
+
+.park-card h3 {
+    margin-top: 0;
+}
+
+.guests {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.guests h2 {
+    margin-top: 0;
+}
+
+.guests ul {
+    list-style-type:none;
+    padding-left: 0;
+    margin: 0
+}
+.guests li {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #eee;
+}

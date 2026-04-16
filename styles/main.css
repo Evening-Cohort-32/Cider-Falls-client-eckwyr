@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background-color: #f4f1e8;
+    color: #1f1f1f;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#container {
+    flex: 1;
+  
+}
+
+.header {
+    background-color: #1f2a24;
+    color: #f4f1e8;
+    border-bottom: 4px solid #b89b5e;
+    padding: 1rem 2rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    height: 120px;
+    width: auto;
+}
+
+.title-group h1 {
+    margin: 0;
+}
+
+.tagline,
+.eyebrow {
+    margin: 0;
+}
+
+.footer {
+    background-color: #2b352f;
+    color: #f4f1e8;
+    padding: 1rem 2rem;
+    border-top: 4px solid #b89b5e;
+}
+
+.main-layout {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    align-items: flex-start;
+}
+
+.parks-column {
+    flex: 4;
+    margin: 1.2rem
+}
+
+.guests-column {
+    flex: 1.25;
+    margin-top: 5rem;
+    margin-right: 1.2rem;
+}
+
+.parks {
+    width: 100%;
+}
+
+.parks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.services-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background-color: #e9e4d6;
+    border-bottom: 1px solid #d6d2c4;
+}
+
+.service-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* 👈 this controls spacing */
+    padding: 1.5rem 1.5rem;
+    border: 1px solid #b89b5e;
+    background-color: #f4f1e8;
+    border-radius: 40px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.icon {
+    font-size: 1.2rem;
+}
+
+.service-button:hover {
+    background-color: #d8c9a3;
+}
