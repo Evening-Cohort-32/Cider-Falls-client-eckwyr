@@ -20,7 +20,7 @@ const database = {
     { id: 6, name: "Pine Bluffs Trails", location: "Southeast Section" },
   ],
   parkAreaServices:
-    /*Join Table for many to many relationship between Parks and Services*/
+    /*Join-Table for many to many relationship between Parks and Services*/
     [
       //Chamfort River
       { id: 1, parkAreaId: 1, serviceID: 1 /*rafting*/ },
@@ -40,7 +40,7 @@ const database = {
       { id: 12, parkAreaId: 4, serviceID: 4 /*hiking*/ },
       //Campgrounds
       { id: 13, parkAreaId: 5, serviceID: 9 /*information*/ },
-      { id: 14, parkAreaId: 5, serviceID: 7 /*lodgin*/ },
+      { id: 14, parkAreaId: 5, serviceID: 7 /*lodging*/ },
       { id: 15, parkAreaId: 5, serviceID: 8 /*parking*/ },
       //Pine Bluff Trails
       { id: 16, parkAreaId: 6, serviceID: 9 /*hiking*/ },
@@ -49,14 +49,24 @@ const database = {
     ],
 
   guests: [
-    { id: 1, firstName: "Sarah", lastName: "Johnson" },
-    { id: 2, firstName: "Michael", lastName: "Chen" },
-    { id: 3, firstName: "Emily", lastName: "Rodriguez" },
-    { id: 4, firstName: "David", lastName: "Patel" },
-    { id: 5, firstName: "Jessica", lastName: "Martinez" },
-    { id: 6, firstName: "James", lastName: "Wilson" },
-    { id: 7, firstName: "Maria", lastName: "Garcia" },
-    { id: 8, firstName: "Robert", lastName: "Anderson" },
+    { id: 1, firstName: "Sarah", lastName: "Johnson", parkAreaServicesId: 3 },
+    { id: 2, firstName: "Michael", lastName: "Chen", parkAreaServicesId: 18 },
+    { id: 3, firstName: "Emily", lastName: "Rodriguez", parkAreaServicesId: 5 },
+    { id: 4, firstName: "David", lastName: "Patel", parkAreaServicesId: 10 },
+    {
+      id: 5,
+      firstName: "Jessica",
+      lastName: "Martinez",
+      parkAreaServicesId: 14,
+    },
+    { id: 6, firstName: "James", lastName: "Wilson", parkAreaServicesId: 1 },
+    { id: 7, firstName: "Maria", lastName: "Garcia", parkAreaServicesId: 12 },
+    {
+      id: 8,
+      firstName: "Robert",
+      lastName: "Anderson",
+      parkAreaServicesId: 12,
+    },
   ],
 };
 
