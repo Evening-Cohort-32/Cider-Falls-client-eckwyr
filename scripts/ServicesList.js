@@ -1,5 +1,7 @@
 import { getServices, getParkAreaServices } from "./database.js";
 
+//for grid
+
 const services = getServices();
 
 export const servicesHTMLforPark = (parkID) => {
@@ -18,6 +20,8 @@ export const servicesHTMLforPark = (parkID) => {
   html += "</ul>";
   return html;
 };
+
+//for services/nav bar
 
 export const servicesBar = () => {
   let servicesHTML = `<section class="services-bar">`;
