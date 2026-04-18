@@ -27,7 +27,7 @@ export const servicesBar = () => {
   let servicesHTML = `<section class="services-bar">`;
 
   for (const service of services) {
-    servicesHTML += `<button class="service-button">
+    servicesHTML += `<button class="service-button" data-service-id="${service.id}">
         <span class="icon">${service.icon}</span>
         <span class ="label">${service.name}</span>
     </button>`;

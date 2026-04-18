@@ -13,7 +13,7 @@ export const parkList = () => {
   for (const park of parks) {
     parkHTML += `
     <article class="park-card">
-    <h3>${park.name}</h3>
+    <h3 class="park-title" data-park-id="${park.id}">${park.name}</h3>
     <p>${park.location}</p>
      ${servicesHTMLforPark(park.id)}
     </article>
