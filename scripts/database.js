@@ -85,3 +85,22 @@ export const getGuests = () => {
 export const getParkAreaServices = () => {
   return structuredClone(database.parkAreaServices);
 };
+
+export const moveGuestToPark = (guestId, parkAreaId) => {
+  const guest = database.guests.find((currentGuest) => currentGuest.id === guestId);
+  if (!guest) {
+    return false;
+  }
+
+  const parkRelationship = database.parkAreaServices.find(
+    (relationship) => relationship.parkAreaId === parkAreaId
+  );
+
+  if (!parkRelationship) {
+    return false;
+  }
+
+  guest.parkAreaServicesId = parkRelationship.id;
+  document.dispatchEvent(new CustomEvent("stateChanged"));
+  return true;
+};
