@@ -6,6 +6,7 @@ import {
     getParkAreaServices,
     getParks,
     getServices,
+    moveGuestToPark,
 } from "./database.js";
 
 const toTitleCase = (text) => {
@@ -17,7 +18,12 @@ const toTitleCase = (text) => {
 };
 
 const mainContainer = document.querySelector("#container");
-const applicationHTML = `
+const ADMIN_USERNAME = "ranger";
+const ADMIN_PASSWORD = "ciderfalls";
+let isAdminAuthenticated = false;
+
+const render = () => {
+    const applicationHTML = `
     ${servicesBar()}
     <section class = "main-layout">
         <div class="parks-column">
@@ -25,14 +31,46 @@ const applicationHTML = `
         </div>
 
         <div class="guests-column">
-        ${guestList()}
+        ${guestList(isAdminAuthenticated)}
         </div>
     </section>
 `;
 
-mainContainer.innerHTML = applicationHTML;
+    mainContainer.innerHTML = applicationHTML;
+};
+
+render();
 
 mainContainer.addEventListener("click", (clickEvent) => {
+    const loginButton = clickEvent.target.closest("#adminLoginButton");
+    if (loginButton) {
+        const usernameInput = document.querySelector("#adminUsername");
+        const passwordInput = document.querySelector("#adminPassword");
+
+        if (!usernameInput || !passwordInput) {
+            return;
+        }
+
+        const username = usernameInput.value.trim().toLowerCase();
+        const password = passwordInput.value;
+
+        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+            isAdminAuthenticated = true;
+            render();
+            return;
+        }
+
+        window.alert("Incorrect admin credentials. Try username 'ranger'.");
+        return;
+    }
+
+    const logoutButton = clickEvent.target.closest("#adminLogoutButton");
+    if (logoutButton) {
+        isAdminAuthenticated = false;
+        render();
+        return;
+    }
+
     const parkTitle = clickEvent.target.closest(".park-title");
     if (parkTitle) {
         const parkId = Number(parkTitle.dataset.parkId);
@@ -74,4 +112,27 @@ mainContainer.addEventListener("click", (clickEvent) => {
             window.alert(`${serviceName} is available in: ${formattedParks}.`);
         }
     }
+
+    const moveButton = clickEvent.target.closest("#moveVisitorButton");
+    if (moveButton) {
+        if (!isAdminAuthenticated) {
+            window.alert("Admin login is required to move visitors.");
+            return;
+        }
+
+        const visitorDropdown = document.querySelector("#visitorSelect");
+        const parkDropdown = document.querySelector("#parkSelect");
+
+        if (!visitorDropdown || !parkDropdown) {
+            return;
+        }
+
+        const guestId = Number(visitorDropdown.value);
+        const parkAreaId = Number(parkDropdown.value);
+        moveGuestToPark(guestId, parkAreaId);
+    }
+});
+
+document.addEventListener("stateChanged", () => {
+    render();
 });
